@@ -1,10 +1,10 @@
-# Program 3 - OverUnder guess the number 1 - 15
+# Program 3 - OverUnder guess the number 1 - 1000
 
 import random
 
-# Function to pick a number 1 - 100
+# Function to pick a number 1 - 1000
 def generate_number():
-    return random.randint(1, 100)
+    return random.randint(1, 1000)
 
 # Function to compare the guess with correst number and give feedback whether its over or under
 def compare_guess(guess, number):
@@ -22,12 +22,12 @@ guessed = False # indicates if the player has guessed correctly
 
 while not guessed: # While the player has not guessed correctly
     try:
-        guess = int(input('Guess a number between 1 and 100: ')) # Ask the player for another guess
+        guess = int(input('Guess a number between 1 and 1000: ')) # Ask the player for another guess
     except ValueError:
         print('Invalid input. Please enter a number.') # if they enter a character other than a number
     else:
-        if guess < 1 or guess > 100: # Check if the guess is within the range
-            print('Out of range. Please enter a number between 1 and 15.') # Print a message
+        if guess < 1 or guess > 1000: # Check if the guess is within the range
+            print('Out of range. Please enter a number between 1 and 1000.') # Print a message
         else:
             guesses += 1 # Increase the number of guesses by one
             feedback = compare_guess(guess, number) # Get the feedback from the compare_guess function
