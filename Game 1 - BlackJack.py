@@ -1,23 +1,25 @@
 # Jan 16, 2024
 # Boston Dolter and Issam Syed
 
-# BlackJack
+# Game 1 - BlackJack
 
 # import pygame program
-# import random
+# import random. (So cards can be picked randomly)
 import copy
 import random
 import pygame
 
 pygame.init()
 
-# Create cards so that random picks it
+# Cards
 cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 one_deck = 4 * cards
 decks = 4
+
+# Display
 WIDTH = 600
 HEIGHT = 800
-screen = pygame.display.set_mode([WIDTH, HEIGHT])
+screen = pygame.display.set_mode([WIDTH, HEIGHT], pygame.RESIZABLE)  # Set resizable mode
 pygame.display.set_caption('Blackjack! By Issam and Boston')
 fps = 60
 timer = pygame.time.Clock()
@@ -36,7 +38,7 @@ reveal_dealer = False
 hand_active = False
 outcome = 0
 add_score = False
-results = ['', 'PLAYER BUSTED o_O', 'Player WINS! :)', 'DEALER WINS :(', 'TIE GAME...']
+results = ['', 'You Busted', 'You Win!', 'Dealer Wins', 'Tie (Push)']
 
 # Deal cards by selecting randomly from deck, and make function for one card at a time
 def deal_cards(current_hand, current_deck):
@@ -122,8 +124,9 @@ def draw_game(act, record, result):
         screen.blit(font.render(results[result], True, 'white'), (15, 25))
         # Center the "NEW HAND" button
         button_width, button_height = 300, 100
-        button_x = (WIDTH - button_width) // 2
-        button_y = HEIGHT // 2 + 50  # Adjust the vertical position as needed
+        button_x = (screen.get_width() - button_width) // 2
+        button_y = screen.get_height() // 2 + 50  # Adjust the vertical position as needed
+
         deal = pygame.draw.rect(screen, 'white', [button_x, button_y, button_width, button_height], 0, 5)
         pygame.draw.rect(screen, 'green', [button_x, button_y, button_width, button_height], 3, 5)
         pygame.draw.rect(screen, 'black', [button_x + 3, button_y + 3, button_width - 6, button_height - 6], 3, 5)
@@ -185,7 +188,10 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-        if event.type == pygame.MOUSEBUTTONUP:
+        elif event.type == pygame.VIDEORESIZE:
+            WIDTH, HEIGHT = event.size
+            screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)  # Adjust the screen size
+        elif event.type == pygame.MOUSEBUTTONUP:
             if not active:
                 if buttons[0].collidepoint(event.pos):
                     active = True
@@ -231,5 +237,3 @@ while run:
     pygame.display.flip()
 
 pygame.quit()
-
-
