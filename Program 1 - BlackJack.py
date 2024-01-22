@@ -1,7 +1,7 @@
 # Jan 16, 2024
 # Boston Dolter and Issam Syed
 
-# Game 1 - BlackJack
+# Program 1 - BlackJack
 
 # import pygame program
 # import random. (So cards can be picked randomly)

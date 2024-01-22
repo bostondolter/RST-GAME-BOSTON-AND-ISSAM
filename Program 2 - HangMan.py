@@ -1,4 +1,4 @@
-# Game 2 - HangMan
+# Program 2 - HangMan
 
 import random
 
