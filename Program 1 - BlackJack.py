@@ -59,7 +59,7 @@ def draw_cards(player, dealer, reveal):
         pygame.draw.rect(screen, 'white', [70 + (70 * i), 460 + (5 * i), 120, 220], 0, 5)
         screen.blit(font.render(player[i], True, 'black'), (75 + 70 * i, 465 + 5 * i))
         screen.blit(font.render(player[i], True, 'black'), (75 + 70 * i, 635 + 5 * i))
-        pygame.draw.rect(screen, 'red', [70 + (70 * i), 460 + (5 * i), 120, 220], 5, 5)
+        pygame.draw.rect(screen, 'black', [70 + (70 * i), 460 + (5 * i), 120, 220], 5, 5)
 
     # If the player hasn't finished turn, the dealer will hide one card
     for i in range(len(dealer)):
@@ -70,7 +70,7 @@ def draw_cards(player, dealer, reveal):
         else:
             screen.blit(font.render('???', True, 'black'), (75 + 70 * i, 165 + 5 * i))
             screen.blit(font.render('???', True, 'black'), (75 + 70 * i, 335 + 5 * i))
-        pygame.draw.rect(screen, 'blue', [70 + (70 * i), 160 + (5 * i), 120, 220], 5, 5)
+        pygame.draw.rect(screen, 'black', [70 + (70 * i), 160 + (5 * i), 120, 220], 5, 5)
 
 # Pass in player or dealer hand and get the best score possible
 def calculate_score(hand):
@@ -100,21 +100,21 @@ def draw_game(act, record, result):
     button_list = []
     # Initially on startup (not active), the only option is to deal a new hand
     if not act:
-        deal = pygame.draw.rect(screen, 'white', [150, 20, 300, 100], 0, 5)
-        pygame.draw.rect(screen, 'green', [150, 20, 300, 100], 3, 5)
-        deal_text = font.render('DEAL HAND', True, 'black')
-        screen.blit(deal_text, (165, 50))
+        deal = pygame.draw.rect(screen, 'white', [150, 300, 300, 100], 0, 5)
+        pygame.draw.rect(screen, 'black', [150, 300, 300, 100], 3, 5)
+        deal_text = font.render('Deal Hand', True, 'black')
+        screen.blit(deal_text, (190, 330))
         button_list.append(deal)
     # Once the game started, show hit and stand buttons and win/loss records
     else:
         hit = pygame.draw.rect(screen, 'white', [0, 700, 300, 100], 0, 5)
-        pygame.draw.rect(screen, 'green', [0, 700, 300, 100], 3, 5)
-        hit_text = font.render('HIT ME', True, 'black')
+        pygame.draw.rect(screen, 'black', [0, 700, 300, 100], 3, 5)
+        hit_text = font.render('Hit', True, 'black')
         screen.blit(hit_text, (55, 735))
         button_list.append(hit)
         stand = pygame.draw.rect(screen, 'white', [300, 700, 300, 100], 0, 5)
-        pygame.draw.rect(screen, 'green', [300, 700, 300, 100], 3, 5)
-        stand_text = font.render('STAND', True, 'black')
+        pygame.draw.rect(screen, 'black', [300, 700, 300, 100], 3, 5)
+        stand_text = font.render('Stand', True, 'black')
         screen.blit(stand_text, (355, 735))
         button_list.append(stand)
         score_text = smaller_font.render(f'Wins: {record[0]}   Losses: {record[1]}   Draws: {record[2]}', True, 'white')
