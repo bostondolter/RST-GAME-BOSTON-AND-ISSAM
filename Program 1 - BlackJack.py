@@ -122,7 +122,7 @@ def draw_game(act, record, result):
     # If there is an outcome for the hand that was played, display a restart button and tell the user what happened
     if result != 0:
         screen.blit(font.render(results[result], True, 'white'), (15, 25))
-        # Center the "NEW HAND" button
+        # Center the "New Hand" button
         button_width, button_height = 300, 100
         button_x = (screen.get_width() - button_width) // 2
         button_y = screen.get_height() // 2 + 50  # Adjust the vertical position as needed
